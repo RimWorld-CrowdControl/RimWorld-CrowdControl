@@ -1,6 +1,6 @@
 ﻿using System.Json;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public delegate void EffectCommandHandler(object sender, EffectCommand command);
 

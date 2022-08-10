@@ -3,7 +3,7 @@ using Verse;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class HealingGraceEffect : Effect {
         public override string Code => EffectCode.HealingGrace;

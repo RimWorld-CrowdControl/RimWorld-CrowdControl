@@ -1,4 +1,4 @@
-﻿namespace RimWorldTV {
+﻿namespace CrowdControl {
     public enum EffectStatus {
         Success = 0,
         Failure = 1,

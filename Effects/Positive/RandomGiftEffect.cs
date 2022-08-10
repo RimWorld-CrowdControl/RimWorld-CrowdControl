@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class RandomGiftEffect : Effect {
         public override string Code => EffectCode.RandomGift;

@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public class MeteoriteLandingEffect : Effect {
         public override string Code => EffectCode.MeteoriteLanding;
 

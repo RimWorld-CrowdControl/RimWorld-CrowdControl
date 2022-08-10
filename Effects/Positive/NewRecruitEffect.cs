@@ -2,7 +2,7 @@
 using Verse;
 using System;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class NewRecruitEffect : Effect {
         public override string Code => EffectCode.NewRecruit;

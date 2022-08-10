@@ -2,7 +2,7 @@
 using Verse;
 using System.Collections.Generic;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class InspireColonyEffect : Effect {
         public override string Code => EffectCode.InspireColony;

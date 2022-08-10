@@ -3,7 +3,7 @@ using Verse;
 using HugsLib.Settings;
 using System.Collections.Generic;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class WildfireEffect : Effect {
         public override string Code => EffectCode.Wildfire;

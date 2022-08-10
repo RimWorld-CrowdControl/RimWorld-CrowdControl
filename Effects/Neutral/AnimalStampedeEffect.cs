@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Verse.AI.Group;
 using Verse.AI;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class AnimalStampedeEffect : Effect {
         public override string Code => EffectCode.AnimalStampede;

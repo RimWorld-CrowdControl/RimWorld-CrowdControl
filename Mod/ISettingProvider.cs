@@ -1,6 +1,6 @@
 ﻿using HugsLib.Settings;
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public interface ISettingProvider {
         void RegisterSettings(ModSettingsPack Settings);
     }

@@ -3,7 +3,7 @@ using Verse;
 using HugsLib.Settings;
 using System;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class HarvestBountyEffect : TimedEffect {
         public override string Code => EffectCode.HarvestBounty;

@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using RimWorld;
 using Verse;
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public class TcpConnector {
         public ConnectorStatus Status { get; private set; }
 

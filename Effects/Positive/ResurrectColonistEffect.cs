@@ -2,7 +2,7 @@
 using Verse;
 using System.Linq;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class ResurrectColonistEffect : Effect {
         public override string Code => EffectCode.ResurrectColonist;

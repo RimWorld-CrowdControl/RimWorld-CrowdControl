@@ -3,7 +3,7 @@ using RimWorld;
 using System.Collections.Generic;
 using Verse;
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public abstract class Effect : ISettingProvider {
         protected SettingHandle<bool> Enabled;
 

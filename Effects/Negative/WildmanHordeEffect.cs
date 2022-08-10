@@ -5,7 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Verse.AI.Group;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class WildmanHordeEffect : Effect {
         public override string Code => EffectCode.WildmanHorde;

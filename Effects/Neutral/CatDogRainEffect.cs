@@ -4,7 +4,7 @@ using HugsLib.Settings;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class CatDogRainEffect : Effect {
         public override string Code => EffectCode.CatDogRain;

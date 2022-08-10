@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class InfestationEffect : Effect {
         public override string Code => EffectCode.Infestation;

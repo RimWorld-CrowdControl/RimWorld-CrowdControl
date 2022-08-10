@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Verse.AI;
 using Verse.AI.Group;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class TradeCaravanEffect : Effect {
         public override string Code => EffectCode.TradeCaravan;

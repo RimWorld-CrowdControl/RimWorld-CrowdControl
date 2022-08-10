@@ -4,7 +4,7 @@ using RimWorld;
 using Verse;
 
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public class EffectListener {
         public event EffectCommandHandler OnEffect;
 

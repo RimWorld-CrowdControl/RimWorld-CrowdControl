@@ -6,7 +6,7 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public class ModService : ISettingProvider {
 
         #region "Singleton" 

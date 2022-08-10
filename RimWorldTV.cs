@@ -1,13 +1,11 @@
 ﻿using HugsLib;
 using HugsLib.Settings;
-using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
-using Verse;
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public class RimWorldTV : ModBase {
-        public override string ModIdentifier => "RimWorldTV";
+        public override string ModIdentifier => "RimWorldCrowdControl";
 
         private ModService ModService;
 

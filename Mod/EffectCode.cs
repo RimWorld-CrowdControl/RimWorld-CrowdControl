@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public class EffectCode {
         private EffectCode(string value) { Value = value; }
 

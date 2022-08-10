@@ -1,4 +1,4 @@
-﻿namespace RimWorldTV {
+﻿namespace CrowdControl {
     public enum ConnectorStatus {
         Uninitialized, 
         Connected,

@@ -5,7 +5,7 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 
-namespace RimWorldTV {
+namespace CrowdControl {
 
     public class OutbreakEffect : Effect {
         public override string Code => EffectCode.Outbreak;

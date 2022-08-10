@@ -7,8 +7,8 @@
     <ProjectGuid>{CBA56560-FAE2-4EB4-BA77-9E2162B45A81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RimWorldTV</RootNamespace>
-    <AssemblyName>RimWorldTV</AssemblyName>
+    <RootNamespace>CrowdControl</RootNamespace>
+    <AssemblyName>RimWorldCrowdControl</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Work\Crowd Control\Data\RimWorld\Mods\RimWorldTV\Assemblies\</OutputPath>
+    <OutputPath>..\..\Work\Crowd Control\Data\RimWorld\Mods\RimWorldCrowdControl\Assemblies\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -98,18 +98,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RimWorldTV\About\About.xml" />
-    <Content Include="RimWorldTV\Languages\English\Keyed\Messages.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="RimWorldTV\Assemblies\" />
-    <Folder Include="RimWorldTV\Defs\" />
+    <Content Include="RimWorldCrowdControl\About\About.xml" />
+    <Content Include="RimWorldCrowdControl\Languages\English\Keyed\Messages.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "E:\Code\RimWorldTV\RimWorldTV\Languages\English\Keyed\Messages.xml" "E:\Work\Crowd Control\Data\RimWorld\Mods\RimWorldTV\Languages\English\Keyed\Messages.xml" /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

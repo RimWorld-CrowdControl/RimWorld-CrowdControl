@@ -2,7 +2,7 @@
 using Verse;
 using System.Linq;
 
-namespace RimWorldTV {
+namespace CrowdControl {
     public class EffectManager : GameComponent {
 
         private Queue<EffectCommand> CommandQueue = new Queue<EffectCommand>();
