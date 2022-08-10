@@ -12,7 +12,7 @@ Various in-game effects have been implemented. These effects have been designed 
 Currently, this mod includes:
 
 - A simple TCP/IP client which receives effect messages and triggers them in-game.
-- Various in-game effects, for a full list of effects and their outcomes [click here](https://github.com/RimWorld-CrowdControl/RimWorld-CrowdControl/main/Docs/Effect%20List.md).
+- Various in-game effects, for a full list of effects and their outcomes [click here](https://github.com/RimWorld-CrowdControl/RimWorld-CrowdControl/blob/main/Docs/Effect%20List.md).
 - Internationalization & multi-language support.
 - In-game effect configuration menu.
 
