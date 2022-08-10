@@ -1,8 +1,8 @@
 ---
 
-# RimWorldTV Front End
-RimWorldTV is third-party stream integration mod for RimWorld developed by Ludeon Studios.  
-RimWorldTV allows viewers to interact with broadcasters in real-time, adding fun and immersion to the viewing experience.
+# RimWorld-CrowdControl Front End
+RimWorld-CrowdControl is third-party stream integration mod for RimWorld developed by Ludeon Studios.  
+RimWorld-CrowdControl allows viewers to interact with broadcasters in real-time, adding fun and immersion to the viewing experience.
 
 **Note**: This is only a client, this mod does not directly integrate with any particular streaming platform.
 
@@ -12,12 +12,12 @@ Various in-game effects have been implemented. These effects have been designed 
 Currently, this mod includes:
 
 - A simple TCP/IP client which receives effect messages and triggers them in-game.
-- Various in-game effects, for a full list of effects and their outcomes [click here](https://github.com/JacobPersi/RimWorldTV/blob/main/Docs/Effect%20List.md).
+- Various in-game effects, for a full list of effects and their outcomes [click here](https://github.com/JacobPersi/RimWorld-CrowdControl/RimWorld-CrowdControl/main/Docs/Effect%20List.md).
 - Internationalization & multi-language support.
 - In-game effect configuration menu.
 
 # Getting Started
-Download the [latest release](https://github.com/JacobPersi/RimWorldTV/releases/tag/0.0.1) and install it in your Rimworld's Mods folder. You will also need to configure the mod's settings through the in-game options menu.
+Download the [latest release](https://github.com/RimWorld-CrowdControl/RimWorld-CrowdControl/releases/tag/0.0.1) and install it in your Rimworld's Mods folder. You will also need to configure the mod's settings through the in-game options menu.
 
 If at any time your connection to the server drops, you may force-reconnect via the mod options menu. 
 
@@ -27,4 +27,4 @@ RimWolrdTV depends on:
 - [HugsLib](https://github.com/UnlimitedHugs/RimworldHugsLib)
 
 # Legal
-RimWorldTV is developed and distributed under the [MIT License (MIT)](https://github.com/JacobPersi/RimWorldTV/blob/main/LICENSE).
+RimWorld-CrowdControl is developed and distributed under the [MIT License (MIT)](https://github.com/RimWorld-CrowdControl/RimWorld-CrowdControl/blob/main/LICENSE).
