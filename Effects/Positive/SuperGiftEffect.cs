@@ -7,8 +7,8 @@ using System;
 
 namespace CrowdControl {
 
-    public class RandomGiftEffect : Effect {
-        public override string Code => EffectCode.RandomGift;
+    public class SuperGiftEffect : Effect {
+        public override string Code => EffectCode.SuperGift;
 
         private SettingHandle<int> MinCount;
         private SettingHandle<int> MaxCount;
@@ -16,10 +16,10 @@ namespace CrowdControl {
             this.RegisterBaseSetting((Settings));
             MinCount = Settings.GetHandle<int>(
                 settingName: $"Settings.{Code}.MinCount", title: "Settings.MinCount.Title".Translate(), description: "Settings.MinCount.Description".Translate(),
-                defaultValue: 5);
+                defaultValue: 1);
             MaxCount = Settings.GetHandle<int>(
                 settingName: $"Settings.{Code}.MaxCount", title: "Settings.MaxCount.Title".Translate(), description: "Settings.MaxCount.Description".Translate(),
-                defaultValue: 8);
+                defaultValue: 4);
         }
 
         public override EffectStatus Execute(EffectCommand command) {
@@ -55,7 +55,7 @@ namespace CrowdControl {
         }
 
         private static bool IsDonationItem(ThingDef thingDef) {
-            return ((thingDef.BaseMarketValue > 0 && thingDef.BaseMarketValue <= 310.5f) &&
+            return ((thingDef.BaseMarketValue >= 310) &&
                 (thingDef.category == ThingCategory.Item || thingDef.category == ThingCategory.Building) &&
                 (thingDef.category != ThingCategory.Pawn) &&
                 (thingDef.IsApparel || thingDef.IsWeapon || thingDef.IsDrug || thingDef.IsIngestible || thingDef.IsMetal || thingDef.IsMedicine || thingDef.IsArt) &&

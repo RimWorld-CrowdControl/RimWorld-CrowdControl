@@ -12,6 +12,7 @@ namespace CrowdControl {
         public static EffectCode HealingGrace { get { return new EffectCode("healinggrace"); } }
         public static EffectCode NewRecruit { get { return new EffectCode("newrecruit"); } }
         public static EffectCode RandomGift { get { return new EffectCode("randomgift"); } }
+        public static EffectCode SuperGift { get { return new EffectCode("supergift"); } }
         public static EffectCode ResearchBreakthrough { get { return new EffectCode("researchbreakthrough"); } }
         public static EffectCode ResurrectColonist { get { return new EffectCode("resurrectcolonist"); } }
 

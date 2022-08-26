@@ -22,6 +22,7 @@ public class RimWorld : SimpleTCPPack {
         new Effect("Healing Grace", "healinggrace","positive"),
         new Effect("New Recruit", "newrecruit","positive"),
         new Effect("Random Gift", "randomgift","positive"),
+        new Effect("Super Gift", "supergift","positive"),
         new Effect("Research Breakthrough", "researchbreakthrough","positive"),
         new Effect("Resurrect Colonist", "resurrectcolonist","positive"),
 

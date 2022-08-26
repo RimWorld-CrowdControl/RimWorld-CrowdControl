@@ -65,6 +65,10 @@
   <randomgift.Notification>The colony has received a mystery donation!</randomgift.Notification>
   <randomgift.Description>The colony has been given a mystery donation by a charitable organization. What could it be?</randomgift.Description>
 
+  <supergift.Title>Charitable donation</supergift.Title>
+  <supergift.Notification>The colony has received a super donation!</supergift.Notification>
+  <supergift.Description>The colony has been given a large mystery donation by a charitable organization. Wonderous day!</supergift.Description>
+
   <wildmanhorde.Title>Wild Men Horde</wildmanhorde.Title>
   <wildmanhorde.Notification>A horde of wild men approach!</wildmanhorde.Notification>
   <wildmanhorde.Description>A group of wild men come streaming out of the woods, whooping and hollering.\n\nThey're armed with crude weapons and they're looking for a fight.\n\nThey'll attack anything that moves, so be careful!</wildmanhorde.Description>
@@ -131,16 +135,16 @@
   <mentalbreak.Notification>The colony is under mental strain.</mentalbreak.Notification>
   <mentalbreak.Description>The colony is under a lot of stress. Some of the survivors are starting to crack under the pressure. Keep an eye on them and try to help them cope before it's too late.</mentalbreak.Description>
 
-  <tornado.Title>Tornado</tornado.Title>
-  <tornado.Notification>A tornado is incoming!</tornado.Notification>
-  <tornado.Description>A tornado is headed for the colony. Take cover and hope that it doesn't do too much damage!</tornado.Description>
+  <tornado.Title>Tornado Season</tornado.Title>
+  <tornado.Notification>A severe storm is inbound!</tornado.Notification>
+  <tornado.Description>It looks like some bad weather is headed for the colony. Take cover and hope that it doesn't do too much damage!</tornado.Description>
 
   <catdograin.Title>Pet Storm</catdograin.Title>
   <catdograin.Notification>It's raining cats and dogs!</catdograin.Notification>
   <catdograin.Description>It's raining so hard that animals are falling from the sky! Try to take cover and stay safe until it stops.</catdograin.Description>
 
   <orbitalbarrage.Title>Orbital Barrage</orbitalbarrage.Title>
-  <orbitalbarrage.Notification>An orbital barrage is incoming!</orbitalbarrage.Notification>
-  <orbitalbarrage.Description>A ship in orbit is bombarding the area with lasers and missiles. Take cover!</orbitalbarrage.Description>
+  <orbitalbarrage.Notification>An orbital bombardment is incoming!</orbitalbarrage.Notification>
+  <orbitalbarrage.Description>A ship in orbit is bombarding the area with lasers and missiles. What made them angry? Take cover!</orbitalbarrage.Description>
 
 </LanguageData>

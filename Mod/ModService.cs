@@ -36,6 +36,7 @@ namespace CrowdControl {
             {EffectCode.HealingGrace, new HealingGraceEffect()},
             {EffectCode.NewRecruit, new NewRecruitEffect()},
             {EffectCode.RandomGift, new RandomGiftEffect()},
+            {EffectCode.SuperGift, new SuperGiftEffect()},
             {EffectCode.ResearchBreakthrough, new ResearchBreakthroughEffect()},
             {EffectCode.ResurrectColonist, new ResurrectColonistEffect()},
 
