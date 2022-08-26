@@ -80,7 +80,6 @@ namespace CrowdControl {
                 pawnList.Add(pawn);
                 IntVec3 pawnSpawnLocation = CellFinder.RandomClosewalkCellNear(spawnLocation, currentMap, 6, (IntVec3 x) => x.Standable(currentMap));
                 GenSpawn.Spawn(pawn, pawnSpawnLocation, currentMap, WipeMode.Vanish);
-                ModService.Instance.Logger.Trace($"Entity {i}-{parms.pawnKind.defName} spawned at {pawnSpawnLocation}, heading towards {exitLocation} - distance: {spawnLocation.DistanceTo(exitLocation)}!");
             }
 
             LordJob exitJob = new LordJob_ExitMapNear(exitLocation, LocomotionUrgency.Jog, 5f, false, false);
