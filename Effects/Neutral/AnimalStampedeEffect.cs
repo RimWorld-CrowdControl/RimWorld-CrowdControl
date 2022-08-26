@@ -57,21 +57,28 @@ namespace CrowdControl {
             bool hasMap = modService.TryGetColonyMap(out currentMap);
             spawnLocation = parms.spawnCenter;
             exitLocation = new IntVec3(currentMap.Size.x - spawnLocation.x, 0, currentMap.Size.z - spawnLocation.z);
-            return hasMap;
+
+            IntVec3 reachableExit;
+            bool hasReachableExit = CellFinder.TryFindRandomEdgeCellWith((IntVec3 x) => x.Standable(currentMap), currentMap, CellFinder.EdgeRoadChance_Ignore, out reachableExit);
+            exitLocation = (hasReachableExit) ? reachableExit : exitLocation;
+
+            return hasMap && spawnLocation != IntVec3.Invalid && exitLocation != IntVec3.Invalid;
         }
 
         protected override bool TryExecuteWorker(IncidentParms parms) {
             if (CanFireNowSub(parms) == false)
                 return false;
+
             List<Pawn> pawnList = new List<Pawn>(parms.pawnCount);
             foreach (var i in Enumerable.Range(0, parms.pawnCount)) {
                 Pawn pawn = PawnGenerator.GeneratePawn(parms.pawnKind);
                 pawnList.Add(pawn);
-
-                IntVec3 pawnSpawnLocation = CellFinder.RandomClosewalkCellNear(spawnLocation, currentMap, 6, null);
+                
+                IntVec3 pawnSpawnLocation = CellFinder.RandomClosewalkCellNear(spawnLocation, currentMap, 6, (IntVec3 x) => x.Standable(currentMap));
                 GenSpawn.Spawn(pawn, pawnSpawnLocation, currentMap, WipeMode.Vanish);
             }
-            LordJob exitJob = new LordJob_ExitMapNear(exitLocation, LocomotionUrgency.Jog, 1f, false, false);
+
+            LordJob exitJob = new LordJob_ExitMapNear(exitLocation, LocomotionUrgency.Jog, 5f, false, false);
             LordMaker.MakeNewLord(null, exitJob, currentMap, pawnList);
             return true;
         }
