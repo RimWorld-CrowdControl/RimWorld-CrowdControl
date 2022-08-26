@@ -22,14 +22,14 @@ namespace CrowdControl {
                 settingName: $"Settings.{Code}.MaxCount", title: "Settings.MaxCount.Title".Translate(), description: "Settings.MaxCount.Description".Translate(),
                 defaultValue: 13);
         }
-        
+
         public override EffectStatus Execute(EffectCommand command) {
             Map currentMap;
             bool hasMap = ModService.Instance.TryGetColonyMap(out currentMap);
             if (hasMap == false)
                 return EffectStatus.Failure;
 
-            List<PawnKindDef> animalDefs = DefDatabase<PawnKindDef>.AllDefs?.Where(def => 
+            List<PawnKindDef> animalDefs = DefDatabase<PawnKindDef>.AllDefs?.Where(def =>
                 def.RaceProps.Animal && def.RaceProps.animalType != AnimalType.Dryad)?.ToList();
             IncidentParms parms = new IncidentParms();
             parms.target = currentMap;
@@ -58,9 +58,14 @@ namespace CrowdControl {
             spawnLocation = parms.spawnCenter;
             exitLocation = new IntVec3(currentMap.Size.x - spawnLocation.x, 0, currentMap.Size.z - spawnLocation.z);
 
-            IntVec3 reachableExit;
-            bool hasReachableExit = CellFinder.TryFindRandomEdgeCellWith((IntVec3 x) => x.Standable(currentMap), currentMap, CellFinder.EdgeRoadChance_Ignore, out reachableExit);
-            exitLocation = (hasReachableExit) ? reachableExit : exitLocation;
+            bool validExit = false;
+                while (validExit == false) {
+                IntVec3 reachableExit;
+                bool hasReachableExit = CellFinder.TryFindRandomEdgeCellWith((IntVec3 x) => x.Standable(currentMap), currentMap, CellFinder.EdgeRoadChance_Ignore, out reachableExit);
+                exitLocation = (hasReachableExit) ? reachableExit : exitLocation;
+                var distance = spawnLocation.DistanceTo(exitLocation);
+                validExit = distance >= (currentMap.Size.x / 2);
+            }
 
             return hasMap && spawnLocation != IntVec3.Invalid && exitLocation != IntVec3.Invalid;
         }
@@ -73,9 +78,9 @@ namespace CrowdControl {
             foreach (var i in Enumerable.Range(0, parms.pawnCount)) {
                 Pawn pawn = PawnGenerator.GeneratePawn(parms.pawnKind);
                 pawnList.Add(pawn);
-                
                 IntVec3 pawnSpawnLocation = CellFinder.RandomClosewalkCellNear(spawnLocation, currentMap, 6, (IntVec3 x) => x.Standable(currentMap));
                 GenSpawn.Spawn(pawn, pawnSpawnLocation, currentMap, WipeMode.Vanish);
+                ModService.Instance.Logger.Trace($"Entity {i}-{parms.pawnKind.defName} spawned at {pawnSpawnLocation}, heading towards {exitLocation} - distance: {spawnLocation.DistanceTo(exitLocation)}!");
             }
 
             LordJob exitJob = new LordJob_ExitMapNear(exitLocation, LocomotionUrgency.Jog, 5f, false, false);
