@@ -3,7 +3,6 @@ using Verse;
 using HugsLib.Settings;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 
 namespace CrowdControl {
 
@@ -34,7 +33,7 @@ namespace CrowdControl {
 
             foreach (var i in Enumerable.Range(0, spawnCount)) {
                 ThingDef itemDef = donationItems.RandomElement();
-                spawnItems.Add(CreateItem(itemDef));
+                spawnItems.Add(ModService.Instance.CreateItem(itemDef));
             }
 
             IntVec3 location = DropCellFinder.TradeDropSpot(currentMap);
@@ -42,16 +41,6 @@ namespace CrowdControl {
 
             SendCardNotification(currentMap, location, LetterDefOf.PositiveEvent, command.viewerName);
             return EffectStatus.Success;
-        }
-
-        private Thing CreateItem(ThingDef itemDef) {
-            ThingDef stuff = (itemDef.MadeFromStuff) ? GenStuff.DefaultStuffFor(itemDef) : null;
-            Thing item = (Thing)Activator.CreateInstance(itemDef.thingClass);
-            item.def = itemDef;
-            item.SetStuffDirect(stuff);
-            item.PostMake();
-            item.PostPostMake();
-            return item;
         }
 
         private static bool IsDonationItem(ThingDef thingDef) {

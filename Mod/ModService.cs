@@ -5,6 +5,7 @@ using Verse;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
+using System;
 
 namespace CrowdControl {
     public class ModService : ISettingProvider {
@@ -29,7 +30,6 @@ namespace CrowdControl {
         public SettingHandle<bool> ShowAdvanced;
 
         public Dictionary<string, Effect> EffectList = new Dictionary<string, Effect>() {
-
             {EffectCode.AnimalSelfTame, new AnimalSelfTameEffect()},
             {EffectCode.InspireColony, new InspireColonyEffect()},
             {EffectCode.HarvestBounty, new HarvestBountyEffect()},
@@ -39,12 +39,16 @@ namespace CrowdControl {
             {EffectCode.SuperGift, new SuperGiftEffect()},
             {EffectCode.ResearchBreakthrough, new ResearchBreakthroughEffect()},
             {EffectCode.ResurrectColonist, new ResurrectColonistEffect()},
+            {EffectCode.MoodBoost, new MoodBoostEffect()},
+            {EffectCode.CreateHats, new CreateHatsEffect()},
 
             {EffectCode.AnimalStampede, new AnimalStampedeEffect()},
             {EffectCode.MeteoriteLanding, new MeteoriteLandingEffect()},
             {EffectCode.CatDogRain, new CatDogRainEffect()},
             {EffectCode.RandomQuest, new RandomQuestEffect()},
             {EffectCode.TradeCaravan, new TradeCaravanEffect()},
+            {EffectCode.LimbReplacement, new LimbReplacementEffect()},
+            {EffectCode.HunterBecomesHunted, new HunterBecomesHuntedEffect()},
 
             {EffectCode.DestroyHats, new DestroyHatsEffect()},
             {EffectCode.Infestation, new InfestationEffect()},
@@ -54,7 +58,8 @@ namespace CrowdControl {
             {EffectCode.Tornado, new TornadoEffect()},
             {EffectCode.Wildfire, new WildfireEffect()},
             {EffectCode.WildmanHorde, new WildmanHordeEffect()},
-
+            {EffectCode.FoulFood, new FoulFoodEffect()},
+            {EffectCode.PowerOutage, new PowerOutageEffect()},
         };
 
         public void RegisterSettings(ModSettingsPack Settings) {
@@ -89,6 +94,16 @@ namespace CrowdControl {
                 defaultValue: false);
         }
 
+        public Thing CreateItem(ThingDef itemDef) {
+            ThingDef stuff = (itemDef.MadeFromStuff) ? GenStuff.DefaultStuffFor(itemDef) : null;
+            Thing item = (Thing)Activator.CreateInstance(itemDef.thingClass);
+            item.def = itemDef;
+            item.SetStuffDirect(stuff);
+            item.PostMake();
+            item.PostPostMake();
+            return item;
+        }
+
         public bool TryGetColonyMap(out Map outMap) {
             var colonyMaps = (from x in Find.Maps where x.IsPlayerHome select x);
             outMap = colonyMaps.RandomElement();
@@ -121,22 +136,6 @@ namespace CrowdControl {
             if (traderKind.faction != null && faction.def != traderKind.faction) {
                 return 0f;
             }
-
-
-            /*
-            if (ModsConfig.IdeologyActive && faction.ideos != null && traderKind.category == "Slaver") {
-                using (IEnumerator<Ideo> enumerator = faction.ideos.AllIdeos.GetEnumerator()) {
-                    while (enumerator.MoveNext()) {
-                        if (!enumerator.Current.IdeoApprovesOfSlavery()) {
-                            return 0f;
-                        }
-                    }
-                }
-            }
-            if (traderKind.permitRequiredForTrading != null && !map.mapPawns.FreeColonists.Any((Pawn p) => p.royalty != null && p.royalty.HasPermit(traderKind.permitRequiredForTrading, faction))) {
-                return 0f;
-            }
-            */
 
             return traderKind.CalculatedCommonality;
         }

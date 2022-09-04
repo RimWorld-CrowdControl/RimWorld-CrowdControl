@@ -17,10 +17,12 @@ namespace CrowdControl {
             List<Thing> inspiredColonists = new List<Thing>(colonists.Count);
 
             foreach (Pawn colonist in colonists) {
-                InspirationDef inspirationDef = colonist.mindState.inspirationHandler.GetRandomAvailableInspirationDef();
-                bool inspired = colonist.mindState.inspirationHandler.TryStartInspiration(inspirationDef);
-                if (inspired)
-                    inspiredColonists.Add(colonist);
+                if (colonist.Dead == false) {
+                    InspirationDef inspirationDef = colonist.mindState.inspirationHandler.GetRandomAvailableInspirationDef();
+                    bool inspired = colonist.mindState.inspirationHandler.TryStartInspiration(inspirationDef);
+                    if (inspired)
+                        inspiredColonists.Add(colonist);
+                }
             }
 
             if (inspiredColonists.Count > 0) {

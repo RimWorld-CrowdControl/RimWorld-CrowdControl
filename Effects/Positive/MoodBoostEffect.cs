@@ -1,13 +1,11 @@
 ﻿using RimWorld;
-using Verse;
-using HugsLib.Settings;
-using System.Linq;
 using System.Collections.Generic;
+using Verse;
 
 namespace CrowdControl {
 
-    public class MentalBreakEffect : Effect {
-        public override string Code => EffectCode.MentalBreak;
+    public class MoodBoostEffect : Effect {
+        public override string Code => EffectCode.MoodBoost;
 
         public override EffectStatus Execute(EffectCommand command) {
             Map currentMap;
@@ -19,16 +17,16 @@ namespace CrowdControl {
             if (colonists.Count > 0) {
                 Pawn pawn = colonists.RandomElement();
                 if (pawn.Dead == false) {
-                    ThoughtDef def = DefDatabase<ThoughtDef>.GetNamed("MentalStrain");
+                    ThoughtDef def = DefDatabase<ThoughtDef>.GetNamed("MoodBoost");
                     if (def != null && pawn != null && pawn.IsColonist && !pawn.health.Dead) {
                         Thought_Memory moodBoostThought = (Thought_Memory)ThoughtMaker.MakeThought(def);
                         pawn.needs.mood.thoughts.memories.TryGainMemory(moodBoostThought, null);
-                        SendCardNotification(lookAtThings: new List<Thing> { pawn }, notificationType: LetterDefOf.NegativeEvent, triggeredBy: command.viewerName);
+
+                        SendCardNotification(lookAtThings: new List<Thing> { pawn }, notificationType: LetterDefOf.PositiveEvent, triggeredBy: command.viewerName);
                         return EffectStatus.Success;
                     }
                 }
             }
-
             return EffectStatus.Failure;
         }
     }

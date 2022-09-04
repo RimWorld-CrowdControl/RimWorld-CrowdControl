@@ -30,21 +30,35 @@ namespace CrowdControl {
             if (hasMap == false)
                 return EffectStatus.Failure;
 
-            int fireCount = ModService.Instance.Random.Next(MinCount, MaxCount);
+            int attemptCount = 0;
+            int fireCount = ModService.Instance.Random.Next(MinCount, MaxCount) * (int) Size;
             List<TargetInfo> fireLocations = new List<TargetInfo>(fireCount);
 
-            while (fireCount > 0) {
-                IntVec3 targetLocation = CellFinder.RandomCell(currentMap);
-                targetLocation = CellFinder.StandableCellNear(targetLocation, currentMap, 30.0f);
-                bool wasSuccessful = FireUtility.TryStartFireIn(targetLocation, currentMap, Size);
-                if (wasSuccessful) {
-                    fireLocations.Add(new TargetInfo(targetLocation, currentMap));
-                    fireCount--;
+            while (fireCount > 0 && attemptCount < 50) {
+                IntVec3 nucleationPoint = CellFinder.RandomNotEdgeCell(30, currentMap);
+
+                if (nucleationPoint.IsValid) {
+                    for (int i = 0; i < Size; i++) {
+                        IntVec3 fireLocation;
+                        CellFinder.TryFindRandomCellNear(nucleationPoint, currentMap, (int)Size, vec3 => vec3.Standable(currentMap) && vec3.Roofed(currentMap) == false, out fireLocation);
+
+                        if (fireLocation.IsValid) {
+                            Fire fire = (Fire)ThingMaker.MakeThing(ThingDefOf.Fire, null);
+                            fire.fireSize = Size;
+                            GenSpawn.Spawn(fire, fireLocation, currentMap, Rot4.North, WipeMode.Vanish, false);
+                            fireLocations.Add(new TargetInfo(fireLocation, currentMap));
+                            fireCount--;
+                        }
+                    }
                 }
+                attemptCount++;
             }
 
-            SendCardNotification(lookAtThings: fireLocations, notificationType: LetterDefOf.ThreatSmall, triggeredBy: command.viewerName); 
-            return EffectStatus.Success;
+            if (fireCount == 0) {
+                SendCardNotification(lookAtThings: fireLocations, notificationType: LetterDefOf.ThreatSmall, triggeredBy: command.viewerName);
+                return EffectStatus.Success;
+            }
+            return EffectStatus.Failure;
         }
     }
 }

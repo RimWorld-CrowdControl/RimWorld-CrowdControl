@@ -63,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connector\TCPConnector.cs" />
+    <Compile Include="Effects\Negative\PowerOutageEffect.cs" />
+    <Compile Include="Effects\Negative\FoulFoodEffect.cs" />
+    <Compile Include="Effects\Neutral\HunterBecomesHuntedEffect.cs" />
+    <Compile Include="Effects\Neutral\LimbReplacementEffect.cs" />
+    <Compile Include="Effects\Positive\CreateHatsEffect.cs" />
+    <Compile Include="Effects\Positive\MoodBoostEffect.cs" />
     <Compile Include="Effects\Positive\SuperGiftEffect.cs" />
     <Compile Include="Mod\EffectCode.cs" />
     <Compile Include="Mod\EffectManager.cs" />
@@ -104,6 +110,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="RimWorldCrowdControl\About\About.xml" />
+    <Content Include="RimWorldCrowdControl\Defs\Thoughts.xml" />
     <Content Include="RimWorldCrowdControl\Languages\English\Keyed\Messages.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

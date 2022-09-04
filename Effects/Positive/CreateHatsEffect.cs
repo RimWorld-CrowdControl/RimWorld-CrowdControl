@@ -1,13 +1,14 @@
 ﻿using RimWorld;
 using Verse;
+using System.Linq;
+using System;
 using HugsLib.Settings;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CrowdControl {
 
-    public class RandomGiftEffect : Effect {
-        public override string Code => EffectCode.RandomGift;
+    public class CreateHatsEffect : Effect {
+        public override string Code => EffectCode.CreateHats;
 
         private SettingHandle<int> MinCount;
         private SettingHandle<int> MaxCount;
@@ -15,10 +16,10 @@ namespace CrowdControl {
             this.RegisterBaseSetting((Settings));
             MinCount = Settings.GetHandle<int>(
                 settingName: $"Settings.{Code}.MinCount", title: "Settings.MinCount.Title".Translate(), description: "Settings.MinCount.Description".Translate(),
-                defaultValue: 5);
+                defaultValue: 2);
             MaxCount = Settings.GetHandle<int>(
                 settingName: $"Settings.{Code}.MaxCount", title: "Settings.MaxCount.Title".Translate(), description: "Settings.MaxCount.Description".Translate(),
-                defaultValue: 8);
+                defaultValue: 5);
         }
 
         public override EffectStatus Execute(EffectCommand command) {
@@ -27,12 +28,15 @@ namespace CrowdControl {
             if (hasMap == false)
                 return EffectStatus.Failure;
 
-            var donationItems = DefDatabase<ThingDef>.AllDefs?.Where(IsDonationItem);
+            var hatDefs = DefDatabase<ThingDef>.AllDefs.Where(IsHeadGearItem);
+            hatDefs = hatDefs.OrderBy(def => def.techLevel).ToList();
+            hatDefs = hatDefs.Take((hatDefs.Count() - 1) / 2);
+
             int spawnCount = ModService.Instance.Random.Next(MinCount, MaxCount);
             List<Thing> spawnItems = new List<Thing>(spawnCount);
 
             foreach (var i in Enumerable.Range(0, spawnCount)) {
-                ThingDef itemDef = donationItems.RandomElement();
+                ThingDef itemDef = hatDefs.RandomElement();
                 spawnItems.Add(ModService.Instance.CreateItem(itemDef));
             }
 
@@ -43,12 +47,8 @@ namespace CrowdControl {
             return EffectStatus.Success;
         }
 
-        private static bool IsDonationItem(ThingDef thingDef) {
-            return ((thingDef.BaseMarketValue > 0 && thingDef.BaseMarketValue <= 310.5f) &&
-                (thingDef.category == ThingCategory.Item || thingDef.category == ThingCategory.Building) &&
-                (thingDef.category != ThingCategory.Pawn) &&
-                (thingDef.IsApparel || thingDef.IsWeapon || thingDef.IsDrug || thingDef.IsIngestible || thingDef.IsMetal || thingDef.IsMedicine || thingDef.IsArt) &&
-                (thingDef.IsCorpse == false));
+        private bool IsHeadGearItem(ThingDef def) {
+            return (def.fileName == "Apparel_Headgear.xml");
         }
     }
 }

@@ -13,9 +13,11 @@ namespace CrowdControl {
 
             IncidentParms parms = StorytellerUtility.DefaultParmsNow(IncidentCategoryDefOf.ShipChunkDrop, currentMap);
             IncidentWorker_MeteoriteImpact worker = new IncidentWorker_MeteoriteImpact();
+
             worker.def = IncidentDefOf.ShipChunkDrop;
-            worker.def.label = "MeteoriteLanding.Label".Translate();
-            worker.def.letterText = "MeteoriteLanding.Label".Translate();
+            worker.def.label = "meteoritelanding.Label".Translate();
+            worker.def.letterText = "meteoritelanding.Description".Translate();
+
             if (worker.TryExecute(parms) == false) {
                 return EffectStatus.Failure;
             }

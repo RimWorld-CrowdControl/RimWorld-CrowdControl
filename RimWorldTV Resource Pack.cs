@@ -25,6 +25,8 @@ public class RimWorld : SimpleTCPPack {
         new Effect("Super Gift", "supergift","positive"),
         new Effect("Research Breakthrough", "researchbreakthrough","positive"),
         new Effect("Resurrect Colonist", "resurrectcolonist","positive"),
+        new Effect("Mood Boost", "moodboost","positive"),
+        new Effect("Create Hats", "createhats","positive"),
 
         new Effect("Neutral Effects","neutral", ItemKind.Folder),
         new Effect("Animal Stampede", "animalstampede","neutral"),
@@ -32,6 +34,8 @@ public class RimWorld : SimpleTCPPack {
         new Effect("Raining Cats and Dogs", "catdograin","neutral"),
         new Effect("Random Quest", "randomquest","neutral"),
         new Effect("Trade Caravan", "tradecaravan","neutral"),
+        new Effect("Limb Replacement", "limbreplacement","neutral"),
+        new Effect("Hunter Becomes the Hunted", "hunterbecomeshunted","neutral"),
 
         new Effect("Negative Effects","negative", ItemKind.Folder),
         new Effect("Destroy Hats", "destroyhats","negative"),
@@ -42,6 +46,8 @@ public class RimWorld : SimpleTCPPack {
         new Effect("Tornado", "tornado","negative"),
         new Effect("Wildfire", "wildfire","negative"),
         new Effect("Wildman Horde", "wildmanhorde","negative"),
+        new Effect("Foul Food", "foulfood","negative"),
+        new Effect("Power Outage", "poweroutage","negative"),
 
     };
 }
