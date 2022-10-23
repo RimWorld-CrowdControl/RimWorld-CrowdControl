@@ -16,7 +16,7 @@ namespace CrowdControl {
                 settingName: $"Settings.{Code}", title: $"{Code}.Title".Translate(), description: $"{Code}.Description".Translate(),
                 defaultValue: true);
             Enabled.CustomDrawer = rect => false;
-            Enabled.CanBeReset = false;
+            //Enabled.CanBeReset = false;
         }
 
         private void SendCardNotificationInternal(string label = null, string description = null, LetterDef notificationType = null, string triggeredBy = null, LookTargets lookTarget = null) {
